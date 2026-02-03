@@ -1,0 +1,12 @@
+<header class="fixed w-full flex justify-center bg-white/40">
+    <nav class="w-full max-w-7xl flex items-center justify-between p-4">
+        <a routerLink="/" class="text-2xl font-bold tracking-[7px]">CELESTE</a>
+        <div class="flex justify-center gap-5">
+            <a routerLink="/" routerLinkActive="!font-bold" [routerLinkActiveOptions]="{ exact: true}" class="mx-2 tracking-wider font-light hover:font-bold hover:transition-all">INICIO</a>
+            <a routerLink="/services" routerLinkActive="font-bold" class="mx-2 tracking-wider font-light hover:font-bold hover:transition-all">SERVICIOS</a>
+            <a routerLink="/philosofy" routerLinkActive="font-bold" class="mx-2 tracking-wider font-light hover:font-bold hover:transition-all">FILOSOFIA</a>
+        </div>
+
+        <button mat-raised-button>¡Reservar Ahora!</button>
+    </nav>
+</header>
