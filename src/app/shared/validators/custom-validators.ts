@@ -4,10 +4,21 @@ export class CustomValidators {
     public static passwordConfirmationValidator: ValidatorFn = (control) => {
         const password = control.get('password');
 
-        const passwordConfirmation = control.get('passwordConfirmation');
+        const passwordConfirmation = control.get('passwordConfirmation');    
 
-        if (!!password || !!passwordConfirmation) return { passwordConfirmation: 'Password has not been set' }
+        if (!password || !passwordConfirmation) return null;
 
-        return password === passwordConfirmation ? null : { passwordConfirmation: "Passwords don't match." }
+        console.log('Comparing passwords...');
+        console.log(password.value + ' = ' + passwordConfirmation.value);
+
+        const isMatch = password.value === passwordConfirmation.value;
+
+        if (!isMatch) {
+            passwordConfirmation.setErrors({
+                passwordMismatch: true
+            });
+        }
+
+        return isMatch ? null : { passwordMismatch: true };
     }
 }

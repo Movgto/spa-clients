@@ -50,7 +50,7 @@ export class AuthService {
     }
 
     public signup(signupData: any) {
-        return this.http.post(environment.apiUrl + '/auth/register', signupData);
+        return this.http.post(environment.apiUrl + '/customers/create', signupData);
     }
 
     public logout() {

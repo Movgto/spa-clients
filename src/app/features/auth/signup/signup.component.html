@@ -1,27 +1,50 @@
 <div class="w-full h-full flex flex-col justify-center items-center p-10 bg-white shadow-lg">
     <h2 class="text-3xl font-bold w-full">Crear una cuenta</h2>
     <p class="text-slate-500 w-full mt-2">Comienza tu viaje hacia el bienestar con Celeste hoy mismo.</p>
-    
+
     <form class="w-full flex flex-col gap-4 mt-2" [formGroup]="form">
         <mat-form-field appearance="fill" class="w-full">
             <mat-label>Nombre(s)</mat-label>
             <input matInput type="text" required formControlName="firstName">
+            <mat-error *ngIf="form.get('firstName')?.hasError('required')">
+                El nombre es obligatorio
+            </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full">
             <mat-label>Apellidos</mat-label>
             <input matInput type="text" required formControlName="lastName">
+            <mat-error *ngIf="form.get('lastName')?.hasError('required')">
+                Los apellidos son obligatorios
+            </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full">
             <mat-label>Correo Electrónico</mat-label>
             <input matInput type="email" required formControlName="email">
+            <mat-error *ngIf="form.get('email')?.hasError('required')">
+                El correo electrónico es obligatorio
+            </mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email')">
+                Introduce un correo electrónico válido
+            </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="w-full">
             <mat-label>Contraseña</mat-label>
             <input matInput type="password" required formControlName="password">
-        </mat-form-field>        
+            <mat-error *ngIf="form.get('password')?.hasError('required')">
+                La contraseña es obligatoria
+            </mat-error>
+        </mat-form-field>
         <mat-form-field appearance="fill" class="w-full">
             <mat-label>Confirmar Contraseña</mat-label>
             <input matInput type="password" required formControlName="passwordConfirmation">
+            <mat-error *ngIf="form.get('passwordConfirmation')?.hasError('required')">
+                La confirmación de la contraseña es obligatoria
+            </mat-error>
+
+            <mat-error *ngIf="form.hasError('passwordMismatch')">
+                Las contraseñas no coinciden
+            </mat-error>
+
         </mat-form-field>
         <button mat-raised-button color="primary" class="w-full mt-4" (click)="onSubmit()">Registrarse</button>
     </form>
