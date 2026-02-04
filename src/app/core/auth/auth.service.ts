@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { Inject, inject, Injectable, signal } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { environment } from "../../../environments/environment";
-import { catchError, of, tap, throwError } from "rxjs";
+import { tap } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -47,6 +47,10 @@ export class AuthService {
                     this.token.set(res.token);
                 })
             );
+    }
+
+    public signup(signupData: any) {
+        return this.http.post(environment.apiUrl + '/auth/register', signupData);
     }
 
     public logout() {
