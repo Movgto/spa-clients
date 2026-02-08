@@ -38,7 +38,7 @@ export class AuthService {
     }
 
     public login(loginData: any) {
-        this.http.post<any>(environment.apiUrl + '/auth/login', loginData)
+        return this.http.post<any>(environment.apiUrl + '/auth/login', loginData)
             .pipe(
                 tap(res => {
                     localStorage.setItem('user', JSON.stringify(res.user));

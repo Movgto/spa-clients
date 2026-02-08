@@ -1,0 +1,26 @@
+<div class="w-full h-full flex flex-col justify-center items-center p-10 bg-white shadow-lg">
+    <h2 class="text-3xl font-bold w-full">Inicia Sesión</h2>
+    <p class="text-slate-500 w-full mt-2">Accede a tu cuenta para continuar tu viaje hacia el bienestar con Celeste.</p>
+
+    <form class="w-full flex flex-col gap-4 mt-2" [formGroup]="form">        
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput type="email" required formControlName="email">
+            <mat-error *ngIf="form.get('email')?.hasError('required')">
+                El correo electrónico es obligatorio
+            </mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('email')">
+                Introduce un correo electrónico válido
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" required formControlName="password">
+            <mat-error *ngIf="form.get('password')?.hasError('required')">
+                La contraseña es obligatoria
+            </mat-error>
+        </mat-form-field>        
+        <button mat-raised-button color="primary" class="w-full mt-4" (click)="onSubmit()">Iniciar Sesión</button>
+    </form>
+
+</div>
