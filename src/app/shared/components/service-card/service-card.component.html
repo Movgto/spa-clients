@@ -1,0 +1,20 @@
+@if (service(); as service) {
+
+    <div class="flex-1 max-w-sm">
+        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Servicio 1" class="w-full h-64 object-cover rounded-lg shadow-md">
+        <h3 class="text-lg font-semibold mt-4">{{service.name}}</h3>
+        <p class="text-gray-600 mt-2">{{service.description}}</p>
+        <mat-divider />
+    
+        <div class="flex justify-between items-center">
+            <p class="text-teal-900 font-bold mt-2 uppercase">Precio: ${{service.price}}</p>
+            <button
+                mat-button
+                class="text-teal-900 px-4 py-2 rounded mt-2"
+                (click)="openDialog()"
+            ><span class="uppercase">Reservar</span></button>
+        </div>
+    </div>
+
+}
