@@ -25,7 +25,10 @@ export class ServiceCardComponent {
     openDialog() {
         this.matDialog.open(BookServiceDialog, {
             width: '100vw',
-            maxWidth: '650px'
+            maxWidth: '650px',
+            data: {
+                serviceId: this.service().id
+            }
         });
     }
 }

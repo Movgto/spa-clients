@@ -1,22 +1,45 @@
-<mat-dialog-content>
-    <div class="flex w-full h-full">
-        <div class="flex-1 bg-green-900/40 rounded-2xl p-4">
-            <h2 class="mt-2 text-lg font-semibold text-white">Servicio Seleccionado</h2>
-            <p class="mt-5 text-xl text-white font-medium">Masaje Reductivo</p>
+<div class="flex w-full h-full">
+    <div class="flex-1 bg-green-900/40 rounded-2xl p-4">
+        <h2 class="mt-2 text-lg font-semibold text-white">Servicio Seleccionado</h2>
+        <p class="mt-5 text-xl text-white font-medium">Masaje Reductivo</p>
 
-        </div>
+    </div>
 
-        <div class="flex flex-1 flex-col">
-            <h3 class="mt-2 text-lg font-semibold text-gray-700">Seleccione la fecha</h3>
+    <div class="flex flex-1 flex-col p-2 overflow-y-auto">
+        <h3 class="mt-2 text-lg font-semibold text-gray-700">Seleccione la fecha</h3>
+
+        <div
+            class="flex items-center mb-4"
+        >
+            <button mat-icon-button [disabled]="!canMoveBackOnDates()"
+                (click)="moveDates('back')"
+            >
+                <ng-icon name="matChevronLeft"></ng-icon>
+            </button>
             <div class="flex">
-                @for (date of dates(); track $index) {
-                    <button
-                        class="flex-1 h-10 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"                    
-                    >
-                        {{ date | formatDate }}
-                    </button>
+                @for (date of dates(); track $index; let index = $index) {
+                <button
+                    class="flex-1 h-10 rounded-lg border border-gray-300 text-gray-700 hover:cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    [ngClass]="{ 'bg-blue-500 text-white hover:bg-blue-600!': selectedDate() === date }"
+                    (click)="updateDate(index)">
+                    {{ date | formatDate }}
+                </button>
                 }
             </div>
+            <button mat-icon-button
+                (click)="moveDates('forth')"
+            >
+                <ng-icon name="matChevronRight"></ng-icon>
+            </button>
         </div>
+
+
+        @for (slot of freeSlots(); track $index) {
+        <button
+            class="w-full h-10 rounded-lg border hover:cursor-pointer border-gray-300 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mb-2"
+            (click)="selectSlot(slot, data.serviceId)">
+            {{ slot.start| formatDate:'shortTime' }}
+        </button>
+        }
     </div>
-</mat-dialog-content>
+</div>

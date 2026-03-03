@@ -31,6 +31,8 @@
     "@angular/material": "~21.1.2",
     "@angular/platform-browser": "^21.1.0",
     "@angular/router": "^21.1.0",
+    "@ng-icons/core": "^33.1.0",
+    "@ng-icons/material-icons": "^33.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zod": "^4.3.6"
